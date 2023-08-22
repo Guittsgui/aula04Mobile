@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Loan implements Serializable {
 
     Integer quantityOfMonths;
-    Double loanValue, loanFees, entryValue, feeValue, totalLoanValueWithFee ;
+    Double loanValue, loanFees, entryValue, feeValue, totalLoanValueWithFee, totalLoanValueWithFeeLessEntry , monthlyValue;
 
 
     public Loan(Integer quantityOfMonths, Double loanValue, Double loanFees, Double entryValue) {
@@ -45,5 +45,13 @@ public class Loan implements Serializable {
 
     public void setEntryValue(Double entryValue) {
         this.entryValue = entryValue;
+    }
+
+    public void calculateFeesAndTa() {
+        this.feeValue = this.loanFees/100 * this.feeValue;
+        this.totalLoanValueWithFee = this.feeValue + this.loanValue;
+        this.totalLoanValueWithFeeLessEntry = this.totalLoanValueWithFee - this.entryValue;
+        this.monthlyValue = totalLoanValueWithFeeLessEntry / this.quantityOfMonths;
+
     }
 }

@@ -17,6 +17,7 @@ public class LoanResult extends AppCompatActivity {
         
         binding();
         Loan mainLoan = (Loan) getIntent().getSerializableExtra("loan");
+        mainLoan.calculateFeesAndTa();
 
         loanValueField.setText("Você solicitou um empréstimo de: R$" + mainLoan.getLoanValue() );
         loanFeeField.setText("Taxa de juros contratada de: " + mainLoan.getLoanFees() + "%");

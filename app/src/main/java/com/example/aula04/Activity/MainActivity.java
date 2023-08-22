@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
     TextInputLayout loanValue, loanFees, monthQuantity, entryValue;
     Button calculateLoanDatasButton;
+    Integer qtdMonths;
+    Double value, fee, eValue;
+
 
 
 
@@ -41,22 +44,24 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                fillVariables();
+
+                if(eValue >= value){
+                    Toast.makeText(getApplicationContext(), "Entrada não pode ser maior/igual que o Empréstimo", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 Loan newLoan = createLoan();
 
                 Intent intent = new Intent(getApplicationContext(), LoanResult.class);
                 intent.putExtra("loan", newLoan);
                 startActivity(intent);
 
-
             }
         };
     }
 
-
-
-    private Loan createLoan() {
-        Integer qtdMonths;
-        Double value, fee, eValue;
+    private void fillVariables() {
         qtdMonths = Integer.parseInt(monthQuantity.getEditText().getText().toString());
         value = Double.parseDouble(loanValue.getEditText().getText().toString());
         fee = Double.parseDouble(loanFees.getEditText().getText().toString());
@@ -65,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
         }else{
             eValue = Double.parseDouble(entryValue.getEditText().getText().toString());
         }
+    }
+
+
+    private Loan createLoan() {
         Loan loan = new Loan(qtdMonths, value, fee, eValue );
         return loan;
     }
