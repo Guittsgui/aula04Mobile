@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Loan implements Serializable {
 
     Integer quantityOfMonths;
-    Double loanValue, loanFees, entryValue, feeValue, totalLoanValueWithFee, totalLoanValueWithFeeLessEntry , monthlyValue;
+    Double loanValue, loanFees, entryValue, feeValue ;
 
 
     public Loan(Integer quantityOfMonths, Double loanValue, Double loanFees, Double entryValue) {
@@ -47,44 +47,21 @@ public class Loan implements Serializable {
         this.entryValue = entryValue;
     }
 
-    public Double getFeeValue() {
+    public Double getFeeValue(){
+        Double feeValue = (this.loanFees / 100) * this.loanValue;
         return feeValue;
     }
 
-    public void setFeeValue(Double feeValue) {
-        this.feeValue = feeValue;
+    public Double getFullLoanValueWithFees(){
+        return this.loanValue + getFeeValue();
     }
 
-    public Double getTotalLoanValueWithFee() {
-        return totalLoanValueWithFee;
+    public Double getTotalWithoutEntry(){
+        return getFullLoanValueWithFees() - this.entryValue;
     }
 
-    public void setTotalLoanValueWithFee(Double totalLoanValueWithFee) {
-        this.totalLoanValueWithFee = totalLoanValueWithFee;
+    public Double getMonthlyPriceToPay(){
+        return getTotalWithoutEntry() / this.getQuantityOfMonths();
     }
 
-    public Double getTotalLoanValueWithFeeLessEntry() {
-        return totalLoanValueWithFeeLessEntry;
-    }
-
-    public void setTotalLoanValueWithFeeLessEntry(Double totalLoanValueWithFeeLessEntry) {
-        this.totalLoanValueWithFeeLessEntry = totalLoanValueWithFeeLessEntry;
-    }
-
-    public Double getMonthlyValue() {
-        return monthlyValue;
-    }
-
-    public void setMonthlyValue(Double monthlyValue) {
-        this.monthlyValue = monthlyValue;
-    }
-
-    public void calculateFeesAndTa() {
-        this.feeValue = this.loanFees/100 * this.feeValue;
-        this.totalLoanValueWithFee = this.feeValue + this.loanValue;
-
-        this.totalLoanValueWithFeeLessEntry = this.totalLoanValueWithFee - this.entryValue;
-        this.monthlyValue = totalLoanValueWithFeeLessEntry / this.quantityOfMonths;
-
-    }
 }
