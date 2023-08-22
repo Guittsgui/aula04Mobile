@@ -47,9 +47,42 @@ public class Loan implements Serializable {
         this.entryValue = entryValue;
     }
 
+    public Double getFeeValue() {
+        return feeValue;
+    }
+
+    public void setFeeValue(Double feeValue) {
+        this.feeValue = feeValue;
+    }
+
+    public Double getTotalLoanValueWithFee() {
+        return totalLoanValueWithFee;
+    }
+
+    public void setTotalLoanValueWithFee(Double totalLoanValueWithFee) {
+        this.totalLoanValueWithFee = totalLoanValueWithFee;
+    }
+
+    public Double getTotalLoanValueWithFeeLessEntry() {
+        return totalLoanValueWithFeeLessEntry;
+    }
+
+    public void setTotalLoanValueWithFeeLessEntry(Double totalLoanValueWithFeeLessEntry) {
+        this.totalLoanValueWithFeeLessEntry = totalLoanValueWithFeeLessEntry;
+    }
+
+    public Double getMonthlyValue() {
+        return monthlyValue;
+    }
+
+    public void setMonthlyValue(Double monthlyValue) {
+        this.monthlyValue = monthlyValue;
+    }
+
     public void calculateFeesAndTa() {
         this.feeValue = this.loanFees/100 * this.feeValue;
         this.totalLoanValueWithFee = this.feeValue + this.loanValue;
+
         this.totalLoanValueWithFeeLessEntry = this.totalLoanValueWithFee - this.entryValue;
         this.monthlyValue = totalLoanValueWithFeeLessEntry / this.quantityOfMonths;
 

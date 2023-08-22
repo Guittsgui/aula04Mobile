@@ -52,13 +52,21 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Loan newLoan = createLoan();
-
+                clearFields();
                 Intent intent = new Intent(getApplicationContext(), LoanResult.class);
                 intent.putExtra("loan", newLoan);
                 startActivity(intent);
 
             }
         };
+    }
+
+    private void clearFields() {
+        loanFees.getEditText().setText("");
+        loanValue.getEditText().setText("");
+        monthQuantity.getEditText().setText("");
+        entryValue.getEditText().setText("");
+
     }
 
     private void fillVariables() {
