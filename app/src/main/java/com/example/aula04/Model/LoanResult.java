@@ -33,7 +33,7 @@ public class LoanResult extends AppCompatActivity {
         discountingEntry.setText("Descontando o valor da entrade de: R$ " + mainLoan.getEntryValue() +
                 ". Ficará faltando um valor de: R$" + mainLoan.getTotalWithoutEntry());
         monthlyPrice.setText(" Esse valor será pago em : " + mainLoan.getQuantityOfMonths() +
-                " parcelas no valor de R$" + mainLoan.getMonthlyPriceToPay());
+                " parcelas no valor de R$" + mainLoan.getMonthlyPriceToPay() + " cada parcela.");
 
         finishButton.setOnClickListener(finishView());
     }
