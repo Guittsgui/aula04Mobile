@@ -1,6 +1,5 @@
 package com.example.aula04.Activity;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.aula04.Model.Loan;
-import com.example.aula04.Model.LoanResult;
 import com.example.aula04.R;
 import com.google.android.material.textfield.TextInputLayout;
 

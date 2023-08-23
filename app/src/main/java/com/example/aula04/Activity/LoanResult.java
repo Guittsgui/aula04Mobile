@@ -1,4 +1,4 @@
-package com.example.aula04.Model;
+package com.example.aula04.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.aula04.Model.Loan;
 import com.example.aula04.R;
 
 public class LoanResult extends AppCompatActivity {
